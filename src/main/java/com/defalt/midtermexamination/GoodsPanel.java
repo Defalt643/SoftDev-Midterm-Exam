@@ -74,6 +74,7 @@ public class GoodsPanel extends javax.swing.JPanel {
             model.fireTableDataChanged();
         }updateTotalPrice();
         updateTotalItems();
+        displayErrorMessage.setText("");
     }
 
     /**
@@ -107,7 +108,12 @@ public class GoodsPanel extends javax.swing.JPanel {
         displayTotalItems = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         displayTotalPrice = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        displayErrorMessage = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(102, 153, 255));
+
+        goodsTable.setBackground(new java.awt.Color(255, 102, 0));
         goodsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -140,8 +146,13 @@ public class GoodsPanel extends javax.swing.JPanel {
 
         jLabel2.setText("ID : ");
 
+        inputID.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel3.setText("Name :");
 
+        inputName.setBackground(new java.awt.Color(255, 255, 255));
+
+        Save.setBackground(new java.awt.Color(255, 255, 0));
         Save.setText("Save");
         Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +160,7 @@ public class GoodsPanel extends javax.swing.JPanel {
             }
         });
 
+        cancelButton.setBackground(new java.awt.Color(255, 51, 51));
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,8 +170,13 @@ public class GoodsPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Price :");
 
+        inputPrice.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel5.setText("Amount :");
 
+        inputAmount.setBackground(new java.awt.Color(255, 255, 255));
+
+        editButton.setBackground(new java.awt.Color(51, 255, 51));
         editButton.setText("Edit");
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +184,7 @@ public class GoodsPanel extends javax.swing.JPanel {
             }
         });
 
+        addButton.setBackground(new java.awt.Color(51, 255, 51));
         addButton.setText("Add");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +192,7 @@ public class GoodsPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteButton.setBackground(new java.awt.Color(51, 255, 51));
         deleteButton.setText("Delete");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +202,7 @@ public class GoodsPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Brand :");
 
+        inputBrand.setBackground(new java.awt.Color(255, 255, 255));
         inputBrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputBrandActionPerformed(evt);
@@ -193,13 +213,15 @@ public class GoodsPanel extends javax.swing.JPanel {
         jLabel7.setText("Total :");
 
         displayTotalItems.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        displayTotalItems.setText("1Items");
+        displayTotalItems.setText("1Item(s)");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Total price :");
 
         displayTotalPrice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         displayTotalPrice.setText("0.00 Baht");
+
+        jLabel9.setText("Error message :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -264,11 +286,15 @@ public class GoodsPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(displayTotalPrice))
+                                .addComponent(displayTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(displayTotalItems, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(displayTotalItems, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(displayErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -304,7 +330,11 @@ public class GoodsPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(displayTotalPrice))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(displayErrorMessage))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(editButton)
                             .addComponent(addButton)
@@ -317,6 +347,7 @@ public class GoodsPanel extends javax.swing.JPanel {
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
        index = goodsTable.getSelectedRow();
        if(index<0){
+           displayErrorMessage.setText("Please select row to edit goods!.");
            return;
        }enableUI();
        Goods goods = GoodsService.getGoods(index);
@@ -358,6 +389,7 @@ public class GoodsPanel extends javax.swing.JPanel {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         index = goodsTable.getSelectedRow();
         if(index<0){
+            displayErrorMessage.setText("Please select row to delete goods!.");
             return;
         }int reply = JOptionPane.showConfirmDialog(null, "Are you sure?\n"
                 + "ID : "+GoodsService.getGoods(index).getId()
@@ -380,6 +412,7 @@ public class GoodsPanel extends javax.swing.JPanel {
     private javax.swing.JButton addButton;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel displayErrorMessage;
     private javax.swing.JLabel displayTotalItems;
     private javax.swing.JLabel displayTotalPrice;
     private javax.swing.JButton editButton;
@@ -397,6 +430,7 @@ public class GoodsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
