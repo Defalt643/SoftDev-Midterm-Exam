@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package com.defalt.midtermexamination;
+import java.util.*;
+import javax.swing.JTable;
+import javax.swing.table.*;
 
 /**
  *
@@ -14,8 +17,22 @@ public class GoodsPanel extends javax.swing.JPanel {
     /**
      * Creates new form GoodsPanel
      */
+    DefaultTableModel model;
     public GoodsPanel() {
         initComponents();
+        model = (DefaultTableModel)jTable1.getModel();
+        Goods goods = GoodsService.getGoods(0);
+        model.setRowCount(0);
+        updateTable();
+    }
+    public void updateTable(){
+        ArrayList<Goods> goodsList = GoodsService.getGoodsList();
+        for(int i=0;i<goodsList.size();i++){
+            Goods goods = goodsList.get(i);
+            model.addRow(new Object[]{goods.getId(),goods.getName(), 
+                goods.getBrand(),goods.getPrice(),goods.getAmount()});
+            model.fireTableDataChanged();
+        }
     }
 
     /**
@@ -35,12 +52,26 @@ public class GoodsPanel extends javax.swing.JPanel {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
                 "ID", "Name", "Brand", "Price", "Amount"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -54,10 +85,7 @@ public class GoodsPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

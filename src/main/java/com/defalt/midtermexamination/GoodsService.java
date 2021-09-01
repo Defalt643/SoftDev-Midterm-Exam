@@ -30,5 +30,7 @@ public class GoodsService {
 
     public static void updateGoods(int index, Goods goods) {
         goodsList.set(index, goods);
+    }public static ArrayList<Goods> getGoodsList(){
+        return goodsList;
     }
 }
