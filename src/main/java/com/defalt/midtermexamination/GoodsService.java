@@ -1,16 +1,13 @@
 package com.defalt.midtermexamination;
 
+import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class GoodsService {
+public class GoodsService implements Serializable{
 
     private static ArrayList<Goods> goodsList = new ArrayList<>();
-
-    static {
-        goodsList.add(new Goods("1", "Rice", "easy", 15.0, 1));
-        goodsList.add(new Goods("2", "Sausage", "Ceepee", 35.0, 1));
-        goodsList.add(new Goods("3", "Snack", "ArhanYodkhum", 10.5, 2));
-    }
 
     public static void addGoods(Goods goods) {
         goodsList.add(goods);
@@ -32,5 +29,39 @@ public class GoodsService {
         goodsList.set(index, goods);
     }public static ArrayList<Goods> getGoodsList(){
         return goodsList;
+    }public static void saveData(){
+        File file = null;
+        FileOutputStream fos= null;
+        ObjectOutputStream oos = null;
+        try{
+            file  = new File("Ming.dat");
+            fos = new FileOutputStream(file);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(goodsList);
+            oos.close();
+            fos.close();
+        }catch(FileNotFoundException ex){
+            Logger.getLogger(GoodsService.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (IOException ex) {
+            Logger.getLogger(GoodsService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }public static void loadData(){
+        File file = null;
+        FileInputStream fis= null;
+        ObjectInputStream ois = null;
+        try{
+            file  = new File("Ming.dat");
+            fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
+            goodsList = (ArrayList<Goods>) ois.readObject();
+            ois.close();
+            fis.close();
+        }catch(FileNotFoundException ex){
+            Logger.getLogger(GoodsService.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (IOException ex) {
+            Logger.getLogger(GoodsService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+           Logger.getLogger(GoodsService.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 }

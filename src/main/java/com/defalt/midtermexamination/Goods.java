@@ -1,6 +1,8 @@
 package com.defalt.midtermexamination;
 
-class Goods {
+import java.io.Serializable;
+
+class Goods implements Serializable{
     String id,name,brand;
     double price;
     int amount;

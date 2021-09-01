@@ -23,6 +23,7 @@ public class GoodsPanel extends javax.swing.JPanel {
     DefaultTableModel model;
     public GoodsPanel() {
         initComponents();
+        GoodsService.loadData();;
         model = (DefaultTableModel)goodsTable.getModel();
         model.setRowCount(0);
         updateTable();
@@ -384,6 +385,7 @@ public class GoodsPanel extends javax.swing.JPanel {
        }updateTable();
        clearTextField();
        disbleUI();
+       GoodsService.saveData();
     }//GEN-LAST:event_SaveActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -404,6 +406,7 @@ public class GoodsPanel extends javax.swing.JPanel {
             updateTable();
         }
         disbleUI();
+        GoodsService.saveData();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
 
