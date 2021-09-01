@@ -156,6 +156,11 @@ public class GoodsPanel extends javax.swing.JPanel {
         });
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Brand :");
 
@@ -296,6 +301,15 @@ public class GoodsPanel extends javax.swing.JPanel {
        clearTextField();
        disbleUI();
     }//GEN-LAST:event_SaveActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        index = goodsTable.getSelectedRow();
+        if(index<0){
+            return;
+        }GoodsService.delGoods(index);
+        updateTable();
+        disbleUI();
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
