@@ -29,7 +29,10 @@ public class GoodsService implements Serializable{
         goodsList.set(index, goods);
     }public static ArrayList<Goods> getGoodsList(){
         return goodsList;
-    }public static void saveData(){
+    }public static void deleteAllGoods(){
+        goodsList.removeAll(goodsList);
+    }
+    public static void saveData(){
         File file = null;
         FileOutputStream fos= null;
         ObjectOutputStream oos = null;
