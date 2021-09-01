@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class GoodsService implements Serializable{
 
     private static ArrayList<Goods> goodsList = new ArrayList<>();
-
+    
     public static void addGoods(Goods goods) {
         goodsList.add(goods);
     }

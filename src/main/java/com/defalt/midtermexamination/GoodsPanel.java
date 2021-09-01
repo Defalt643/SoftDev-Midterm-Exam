@@ -365,6 +365,7 @@ public class GoodsPanel extends javax.swing.JPanel {
        inputBrand.setText(goods.getBrand());
        inputAmount.setText(String.valueOf(goods.getAmount()));
        inputPrice.setText(String.valueOf(goods.getPrice()));
+       inputID.requestFocus();
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void inputBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBrandActionPerformed
@@ -373,6 +374,7 @@ public class GoodsPanel extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         enableUI();
+        inputID.requestFocus();
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
