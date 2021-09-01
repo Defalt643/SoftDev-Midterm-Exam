@@ -34,7 +34,11 @@ public class GoodsPanel extends javax.swing.JPanel {
             total+=goodsList.get(i).getAmount()*goodsList.get(i).getPrice();
         }displayTotalPrice.setText(String.valueOf(total)+" Baht");
     }public void updateTotalItems(){
-        
+        ArrayList<Goods> goodsList = GoodsService.getGoodsList();
+        int total=0;
+        for(int i=0;i<goodsList.size();i++){
+            total+=goodsList.get(i).getAmount();
+        }displayTotalItems.setText(String.valueOf(total)+" item(s)");
     }
     public void clearTextField(){
         inputName.setText("");
@@ -69,6 +73,7 @@ public class GoodsPanel extends javax.swing.JPanel {
                 goods.getBrand(),goods.getPrice(),goods.getAmount()});
             model.fireTableDataChanged();
         }updateTotalPrice();
+        updateTotalItems();
     }
 
     /**
